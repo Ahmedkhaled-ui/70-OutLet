@@ -1,0 +1,26 @@
+@media (max-width: 700px) {
+  .col-small {
+    width: 45%;
+  }
+}
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.settingPhoto {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.settingCard {
+  height: 120px;
+}
+
+.hints {
+  padding: 10px;
+  color: white;
+  background-color: rgb(255, 255, 255);
+}

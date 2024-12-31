@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>70 OutLet</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../photo/WhatsApp-Image-2024-12-30-at-2.03.41-PM.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.3/dist/sweetalert2.min.css" />
+
+    <link rel="stylesheet" href="bt/bootstrap.min.css" />
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body class="bg-body-secondary">
+    <header>
+      <nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+          <div class="container d-flex justify-content-center">
+            <a class="navbar-brand fw-bolder fs-2" href="#">
+              <span class="text-danger text-decoration-underline">70 </span>
+              OutLet</a
+            >
+          </div>
+        </nav>
+      </nav>
+    </header>
+    <main>
+      <section class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="container d-flex flex-column gap-2">
+          <input
+            id="productName"
+            class="form-control"
+            type="text"
+            placeholder="ادخل اسم المنتج" />
+
+          <input
+            id="productPrice"
+            class="form-control"
+            type="number"
+            placeholder="ادخل سعر المنتج" />
+
+          <input
+            id="productSalle"
+            class="form-control"
+            type="number"
+            placeholder="ادخل سعر بيع المنتج" />
+
+          <input
+            id="img"
+            class="form-control"
+            type="text"
+            placeholder="تحميل صورة  المنتج" />
+
+          <button type="submit" id="btn" class="btn btn-secondary">
+            تسجيل
+          </button>
+          <div class="container d-flex justify-content-between">
+            <a href="index.html"> العودة للصفحة الريئسية </a>
+            <a
+              target="_blank"
+              class=""
+              href="https://console.cloudinary.com/console/c-7aae258f7f3ad05cbca3f150be4dbb/media_library/search?q=&view_mode=mosaic">
+              <span class=""> رفع الصور</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="d-flex justify-content-center bg-transparent"></div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.3/dist/sweetalert2.all.min.js"></script>
+
+    <script src="index.js"></script>
+  </body>
+</html>

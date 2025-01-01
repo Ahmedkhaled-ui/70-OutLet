@@ -17,12 +17,13 @@ function display() {
                     <div class="card-body settingCard text-end">
                       <h5 class="card-title fs-6 text-center">${element.name}</h5>
                       <div class=" d-flex flex-column gap-1 justify-content-between mb-1">
-                                            <p class="card-text small my-0 py-0">سعر البيع: ${element.priceSalle}</p>
 
-                       <p class="card-text small my-0 py-0">سعر الجملة :  ${element.price}</p>
-                      </div>
+                       <p class="card-text small my-0 py-0">سعر الجملة :<span class=" text-danger fw-bolder">${element.price} </span>  </p>
+                                            <p class="card-text small my-0 py-0">سعر البيع:<span class=" text-success fw-bolder">${element.priceSalle} </span> </p>
+
+                       </div>
                      
-                      <p class="card-text my-0 py-0">متواجد: ${element.found} </p>
+                      <p class="card-text my-0 py-0">متواجد: <span class=" text-primary fw-bolder">${element.found} </span>  </p>
                     </div>
                   </div>
                 </div>

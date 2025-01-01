@@ -18,16 +18,16 @@ function display() {
         <img
         class="settingPhoto"
           src="${element.image}"
-          class="card-img-top w-100"
+          class="card-img-top "
           alt="adidas" />
         <div class="card-body settingCard text-end">
         <h1 class="card-title fs-5 text-center ">${element.name}</h1>
             <div class=" d-flex justify-content-between align-items-center" >
-                                 <button onclick="sale(${i}) "   class="btn btn-success  px-3">بيع</button>
+                                 <button onclick="sale(${i}) "   class="btn btn-warning  px-3">بيع</button>
 
             <div>
-            <p class="card-text my-0 py-0">السعر: ${element.priceSalle}</p>
-               <p class="card-text my-0 py-0 ">متواجد: ${element.found} </p>
+            <p class="card-text my-0 py-0 ">السعر:<span class=" text-success fw-bolder">${element.priceSalle} </span>  </p>
+               <p class="card-text my-0 py-0 ">متواجد: <span class=" text-primary fw-bolder">${element.found} </span>  </p>
 
             </div>
 
@@ -101,14 +101,14 @@ other.addEventListener("click", () => {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "نعم",
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
         title: "تم بيع المنتج",
         icon: "success",
       });
-      products.splice(myIndex, 1);
+      products[myIndex].found = "اون لاين";
       localStorage.setItem("product", JSON.stringify(products));
       conferm.classList.add("d-none");
       display();

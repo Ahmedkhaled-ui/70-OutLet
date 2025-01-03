@@ -31,19 +31,6 @@
     <main>
       <section class="vh-100 d-flex justify-content-center align-items-center">
         <div class="container d-flex flex-column gap-2">
-          <form id="uploadForm" class="d-flex justify-content-between">
-            <input
-              class="w-50"
-              type="file"
-              id="fileInput"
-              name="image"
-              accept="image/*"
-              required />
-            <button id="imageUrl" class="btn btn-primary px-3" type="submit">
-              رفع الصورة
-            </button>
-          </form>
-          <span id="loading" class="d-none">...جاري تحميل الصورة</span>
           <input
             id="productName"
             class="form-control"
@@ -61,12 +48,19 @@
             class="form-control"
             type="number"
             placeholder="ادخل سعر بيع المنتج" />
-          <input
-            disabled
-            id="img"
-            class="form-control d-none"
-            type="text"
-            placeholder="ادخل سعر بيع المنتج" />
+          <form id="uploadForm" class="d-flex justify-content-between">
+            <input
+              class="w-50"
+              type="file"
+              id="fileInput"
+              name="image"
+              accept="image/*"
+              required />
+            <button id="imageUrl" class="btn btn-primary px-3" type="submit">
+              رفع الصورة
+            </button>
+          </form>
+          <span id="loading" class="d-none">...جاري تحميل الصورة</span>
 
           <button type="submit" id="btn" class="btn btn-outline-success">
             تسجيل

@@ -9,12 +9,12 @@ let products;
 
 document.addEventListener("DOMContentLoaded", async function () {
   try {
-    const response = await fetch("http://192.168.1.9:3000/images");
+    const response = await fetch(
+      "https://100f-45-247-20-82.ngrok-free.app/images"
+    );
     const images = await response.json();
     console.log(images);
-  } catch (error) {
-    console.error("خطأ أثناء استرجاع الصور:", error);
-  }
+  } catch (error) {}
 });
 
 document
@@ -24,6 +24,8 @@ document
 
     const fileInput = document.getElementById("fileInput");
     const file = fileInput.files[0];
+    const loading = document.getElementById("loading");
+    const img = document.getElementById("imgInput");
 
     if (file) {
       const formData = new FormData();
@@ -32,27 +34,25 @@ document
       try {
         loading.classList.remove("d-none");
 
-        const response = await fetch("http://192.168.1.9:3000/upload", {
-          method: "POST",
-          body: formData,
-        });
+        const response = await fetch(
+          "https://100f-45-247-20-82.ngrok-free.app/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (!response.ok) {
           const text = await response.text();
           console.error("رد الخادم:", text);
           throw new Error("فشل الطلب");
         }
-
         const data = await response.json();
-
-        // عرض رابط الصورة المرفوعة في الـ console
-        console.log("رابط الصورة المرفوعة:", data.url);
         test = data.url;
-        img.value = test;
+        console.log(test);
+
         loading.classList.add("d-none");
-      } catch (error) {
-        console.error("حدث خطأ أثناء رفع الصورة:", error);
-      }
+      } catch (error) {}
     }
   });
 
@@ -81,16 +81,10 @@ function clear() {
   productName.value = null;
   productPrice.value = null;
   productSalle.value = null;
-  img.value = null;
 }
 
 btn.addEventListener("click", () => {
-  if (
-    productName.value &&
-    productPrice.value &&
-    productSalle.value &&
-    img.value
-  ) {
+  if (productName.value && productPrice.value && productSalle.value) {
     getProduct();
     Swal.fire({
       title: "تم اضافة المنتج الي المخزن بنجاح",

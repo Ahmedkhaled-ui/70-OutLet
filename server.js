@@ -10,14 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
-// سياسة CORS للمجالات المحددة فقط
-const corsOptions = {
-  origin: [
-    "http://192.168.1.9:3000",
-    "https://your-frontend-domain.vercel.app",
-  ],
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // تكوين Cloudinary
@@ -29,10 +22,7 @@ cloudinary.config({
 
 // إعداد Multer لتخزين الصور في الذاكرة فقط
 const storage = multer.memoryStorage();
-const upload = multer({
-  storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // الحد الأقصى لحجم الصورة 10 ميغابايت
-});
+const upload = multer({ storage });
 
 // نقطة رفع الصور
 app.post("/upload", upload.single("image"), async (req, res) => {
@@ -67,5 +57,5 @@ app.get("/images", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://192.168.1.9:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

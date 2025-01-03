@@ -8,10 +8,13 @@ let test;
 let products;
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const response = await fetch("https://localhost:3000/images");
-  const images = await response.json();
-
-  console.log(images);
+  try {
+    const response = await fetch("http://192.168.1.9:3000/images");
+    const images = await response.json();
+    console.log(images);
+  } catch (error) {
+    console.error("خطأ أثناء استرجاع الصور:", error);
+  }
 });
 
 document
@@ -29,7 +32,7 @@ document
       try {
         loading.classList.remove("d-none");
 
-        const response = await fetch("https://localhost:3000/upload", {
+        const response = await fetch("http://192.168.1.9:3000/upload", {
           method: "POST",
           body: formData,
         });
@@ -41,12 +44,18 @@ document
         }
 
         const data = await response.json();
+
+        // عرض رابط الصورة المرفوعة في الـ console
+        console.log("رابط الصورة المرفوعة:", data.url);
         test = data.url;
         img.value = test;
         loading.classList.add("d-none");
-      } catch (error) {}
+      } catch (error) {
+        console.error("حدث خطأ أثناء رفع الصورة:", error);
+      }
     }
   });
+
 if (localStorage.getItem("product") == null) {
   products = [];
 } else {

@@ -8,7 +8,7 @@ let test;
 let products;
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const response = await fetch("http://localhost:3000/images");
+  const response = await fetch("https://localhost:3000/images");
   const images = await response.json();
 
   console.log(images);
@@ -29,7 +29,7 @@ document
       try {
         loading.classList.remove("d-none");
 
-        const response = await fetch("http://localhost:3000/upload", {
+        const response = await fetch("https://localhost:3000/upload", {
           method: "POST",
           body: formData,
         });

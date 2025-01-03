@@ -3,7 +3,50 @@ const productPrice = document.querySelector("#productPrice");
 const productSalle = document.querySelector("#productSalle");
 const img = document.querySelector("#img");
 const btn = document.querySelector("#btn");
+const loading = document.querySelector("#loading");
+let test;
 let products;
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const response = await fetch("http://localhost:3000/images");
+  const images = await response.json();
+
+  console.log(images);
+});
+
+document
+  .getElementById("uploadForm")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("fileInput");
+    const file = fileInput.files[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      try {
+        loading.classList.remove("d-none");
+
+        const response = await fetch("http://localhost:3000/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          console.error("رد الخادم:", text);
+          throw new Error("فشل الطلب");
+        }
+
+        const data = await response.json();
+        test = data.url;
+        img.value = test;
+        loading.classList.add("d-none");
+      } catch (error) {}
+    }
+  });
 if (localStorage.getItem("product") == null) {
   products = [];
 } else {
@@ -14,7 +57,7 @@ function getProduct() {
     name: productName.value,
     price: productPrice.value,
     priceSalle: productSalle.value,
-    image: img.value,
+    image: test,
     found: "متاح",
   };
   products.push(productlist);
